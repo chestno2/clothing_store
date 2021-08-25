@@ -1,10 +1,12 @@
 import React from 'react'
-import Directory from '../../Components/directory/Directory'
+
+import DirectoryItems from '../../Components/directory/DirectoryItems'
 import "./Homepage.scss"
 function Homepage() {
     return (
+        // Items Categories of the store
         <div className='homepage'>
-       <Directory />
+       <DirectoryItems />
        </div>
     )
 }

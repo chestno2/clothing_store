@@ -4,7 +4,7 @@ import MenuItem from "../menu-item/MenuItem"
 
 import "./directory.scss"
 
-class Directory extends React.Component {
+class DirectoryItems extends React.Component {
   constructor() {
     super();
 
@@ -57,4 +57,4 @@ class Directory extends React.Component {
   }
 }
 
-export default Directory;
+export default DirectoryItems;
