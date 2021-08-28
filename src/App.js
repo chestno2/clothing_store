@@ -6,34 +6,47 @@ import ShoppingItems from "./Pages/shop/ShoppingItems.jsx"
 import HeaderComponent from './Components/header/HeaderComponent';
 import AuthenticationComponent from './Components/authentication/AuthenticationComponent';
 import {auth} from "./firebase/Firebase.config"
-
+import { createProfileDocument } from './firebase/Firebase.config';
 import * as React from 'react'
 class App extends React.Component {
   
-  constructor()
-  {
+  constructor() {
     super();
-  this.state = {
-    currentUser:null
-  }
+
+    this.state = {
+      currentUser: null
+    };
   }
 
   unsubscribeFromAuth = null;
+// storing data of the user signin in Firebase
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createProfileDocument(userAuth);
 
-  componentDidMount()
-  {
-   this.unsubscribeFromAuth =  auth.onAuthStateChanged(user=>{
-      this.setState({currentUser:user});
-      console.log(user);
-    })
-  }
-// any auth change will do 
-  componentWillUnmount()
-  {
-    this.unsubscribeFromAuth()
-    // permanent login
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log(this.state);
+        });
+      }
+   
+      else{
+      this.setState({ currentUser: userAuth });
+      }
+    });
   }
 
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+ 
   render(){
     return(
       <div className="App">
