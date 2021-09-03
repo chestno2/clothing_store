@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./header.styles.scss"
 import { auth } from '../../firebase/Firebase.config'
+import { connect } from 'react-redux'
 function HeaderComponent({currentUser}) {
     return (
         <div className=" header " >
@@ -26,5 +27,11 @@ function HeaderComponent({currentUser}) {
         </div>
     )
 }
+// it allows to access root reducer which is an object which points to different reducer 
 
-export default HeaderComponent
+const mapStateToProps = (state)=>({
+  currentUser:state.user.currentUser
+//   rootreduce=>userReducer=>CurrentUSER  
+})
+
+export default connect(mapStateToProps)(HeaderComponent)
