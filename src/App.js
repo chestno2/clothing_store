@@ -1,7 +1,7 @@
 import './App.css';
 import Homepage from './Pages/homepage/Homepage';
 import { Route } from "react-router-dom"
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import ShoppingItems from "./Pages/shop/ShoppingItems.jsx"
 import HeaderComponent from './Components/header/HeaderComponent';
 import AuthenticationComponent from './Components/authentication/AuthenticationComponent';
@@ -44,13 +44,16 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShoppingItems} />
-          <Route path='/signin' component={AuthenticationComponent} />
+          <Route exact path='/signin' render={() => this.props.currentUser ? <Redirect to="/" /> : (<AuthenticationComponent />)} />
         </Switch>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+})
 const mapDispatchToProps = dispatch => ({
   //prop name : dispatch means pass everything to the reducer new action
   setCurrentUser: user => dispatch(setCurrentUser(user))
@@ -59,6 +62,6 @@ const mapDispatchToProps = dispatch => ({
 
 console.log(mapDispatchToProps);
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
