@@ -5,11 +5,11 @@ import { Switch } from 'react-router-dom';
 import ShoppingItems from "./Pages/shop/ShoppingItems.jsx"
 import HeaderComponent from './Components/header/HeaderComponent';
 import AuthenticationComponent from './Components/authentication/AuthenticationComponent';
-import {auth} from "./firebase/Firebase.config"
+import { auth } from "./firebase/Firebase.config"
 import { createProfileDocument } from './firebase/Firebase.config';
 import * as React from 'react'
 import { connect } from 'react-redux';
-import  {setCurrentUser} from "./redux/User/user.actions"
+import { setCurrentUser } from "./redux/User/user.actions"
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -20,6 +20,7 @@ class App extends React.Component {
       if (auth) {
         const userRef = await createProfileDocument(auth);
 
+        //set current user is an action that sets the user
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
             id: snapShot.id,
@@ -51,9 +52,12 @@ class App extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  //prop name : dispatch means pass everything to the reducer new action
   setCurrentUser: user => dispatch(setCurrentUser(user))
+
 });
 
+console.log(mapDispatchToProps);
 export default connect(
   null,
   mapDispatchToProps
