@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import "./header.styles.scss"
 import { auth } from '../../firebase/Firebase.config'
 import { connect } from "react-redux"
+import Carticon from '../Carticoncomponent/Carticon'
+
+
 function HeaderComponent({ currentUser }) {
     console.log(currentUser);
     return (
@@ -23,7 +26,7 @@ function HeaderComponent({ currentUser }) {
                         <Link className="option" to="/signin" >Sign In</Link>
                 }
 
-
+                <Carticon />
             </div>
         </div>
     )
