@@ -4,9 +4,10 @@ import "./header.styles.scss"
 import { auth } from '../../firebase/Firebase.config'
 import { connect } from "react-redux"
 import Carticon from '../Carticoncomponent/Carticon'
+import CartDropdown from '../cartdropdown/CartDropdown'
 
 
-function HeaderComponent({ currentUser }) {
+function HeaderComponent({ currentUser, hidden }) {
     console.log(currentUser);
     return (
         <div className=" header " >
@@ -28,14 +29,16 @@ function HeaderComponent({ currentUser }) {
 
                 <Carticon />
             </div>
+            {hidden ? null :
+                <CartDropdown />}
         </div>
     )
 }
 // it allows to access root reducer which is an object which points to different reducer 
 //it is a function that allows us to access the reducer or state
-const mapStateToProps = (state) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
     //property:value is  
-    currentUser: state.user.currentUser
+    currentUser, hidden
 
     //   rootreduce=>userReducer=>CurrentUSER  
 })
