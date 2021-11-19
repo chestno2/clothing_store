@@ -30,6 +30,6 @@ function CollectionItem({ item, addItem }) {
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item))
 })
-
+//item wo item hain jo hum add to cart pe click kr rhe hain
 
 export default connect(null, mapDispatchToProps)(CollectionItem)
