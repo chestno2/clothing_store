@@ -1,4 +1,5 @@
 import CartActionTypes from "./cartTypes";
+import { addItemToCart } from "./cart.utils";
 const INITIAL_STATE = {
     hidden: true,
     cartItems: []
@@ -14,7 +15,8 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.ADD_ITEMS:
             return {
                 ...state,
-                cartItems: [...state.cartItems, action.payload]
+
+                cartItems: addItemToCart(state.cartItems, action.payload)
                 //action payload are new iems
                 //spreading all the arrays value new will appear at the end
 
