@@ -3,6 +3,7 @@ import CustomButton from '../custombutton/CustomButton'
 import { connect } from 'react-redux'
 import "./cartdropdown.scss"
 import CartItems from '../cartitems/CartItems'
+import { selectCartItems } from '../../redux/Cart/cart.selector'
 function CartDropdown({ cartItems }) {
     return (
         <div className="cart-dropdown" >
@@ -11,16 +12,15 @@ function CartDropdown({ cartItems }) {
                     cartItems.map(cartitem => <CartItems key={cartitem.id}
                         item={cartitem} />)
                 }
-                <CustomButton   >Go to checkout</CustomButton>
+                <CustomButton>Go to checkout</CustomButton>
             </div>
         </div>
     )
 }
 
-const mapStateToprops = ({ cart: { cartItems } }) => ({
+const mapStateToprops = (state) => ({
     //new way of destructuring we are getting all the cartitems fronm here
-    cartItems
-
+    cartItems: selectCartItems(state)
 
 })
 
