@@ -5,6 +5,9 @@ import { auth } from '../../firebase/Firebase.config'
 import { connect } from "react-redux"
 import Carticon from '../Carticoncomponent/Carticon'
 import CartDropdown from '../cartdropdown/CartDropdown'
+import { createStructuredSelector } from 'reselect'
+import { selectCurrentUser } from '../../redux/User/user.selector'
+import { selectCarthidden } from '../../redux/Cart/cart.selector'
 
 
 function HeaderComponent({ currentUser, hidden }) {
@@ -36,10 +39,10 @@ function HeaderComponent({ currentUser, hidden }) {
 }
 // it allows to access root reducer which is an object which points to different reducer 
 //it is a function that allows us to access the reducer or state
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+const mapStateToProps = createStructuredSelector({
     //property:value is  
-    currentUser, hidden
-
+    currentUser: selectCurrentUser,
+    hidden: selectCarthidden
     //   rootreduce=>userReducer=>CurrentUSER  
 })
 

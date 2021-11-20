@@ -5,6 +5,7 @@ import "./carticon.scss"
 import { connect } from "react-redux"
 import { toggleCartHidden } from '../../redux/Cart/cartActions'
 import { selectCartItemscount } from '../../redux/Cart/cart.selector'
+import { createStructuredSelector } from 'reselect'
 
 function Carticon({ toggleCartHidden, itemCount }) {
     return (
@@ -20,8 +21,8 @@ const mapDispatchToProps = dispatch => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 })
 
-const mapStateToProps = (state) => ({
-    itemCount: selectCartItemscount(state)
+const mapStateToProps = createStructuredSelector({
+    itemCount: selectCartItemscount
 })
 
 
