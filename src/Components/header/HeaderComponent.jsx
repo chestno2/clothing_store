@@ -44,4 +44,12 @@ const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
     //   rootreduce=>userReducer=>CurrentUSER  
 })
 
+// const mapStateToProps = createStructuredSelector({
+//     //property:value is  
+//     currentUser: selectCurrentUser,
+//     hidden:selectCarthidden
+
+//     //   rootreduce=>userReducer=>CurrentUSER  
+// })
+
 export default connect(mapStateToProps)(HeaderComponent)

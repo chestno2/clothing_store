@@ -1,12 +1,21 @@
 // Combine all the reducer in the root reducer overal  reducer
-
 import { combineReducers } from "redux"
 import userReducer from "./User/userReducer"
 import cartReducer from "./Cart/cartReducer"
-export default combineReducers({
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+
+// it gives the key of user to userReducer and gives the key to 
+// the reducer is cart 
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['cart']
+};
+
+const rootReducer = combineReducers({
     user: userReducer,
     cart: cartReducer
+});
 
-    // it gives the key of user to userReducer and gives the key to 
-    // the reducer
-})
+export default persistReducer(persistConfig, rootReducer);

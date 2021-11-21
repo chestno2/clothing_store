@@ -10,9 +10,9 @@ import { createProfileDocument } from './firebase/Firebase.config';
 import * as React from 'react'
 import { connect } from 'react-redux';
 import { setCurrentUser } from "./redux/User/user.actions"
-import { selectCurrentUser } from './redux/User/user.selector';
-import { createStructuredSelector } from 'reselect';
+
 import CheckoutPage from './Pages/Checkoutcomponent/CheckoutPage';
+
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -59,8 +59,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
