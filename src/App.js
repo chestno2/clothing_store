@@ -42,6 +42,9 @@ class App extends React.Component {
   }
 
   render() {
+
+    console.log();
+
     return (
       <div>
         <HeaderComponent />
@@ -59,6 +62,7 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 })
+
 const mapDispatchToProps = dispatch => ({
   //prop name : dispatch means pass everything to the reducer new action
   setCurrentUser: user => dispatch(setCurrentUser(user))
