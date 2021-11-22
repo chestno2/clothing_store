@@ -5,7 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { selectCollections } from '../../redux/Shop/shopSelector';
 import { connect } from 'react-redux';
 
-const ShoppingItems = ({ collections }) => {
+function ShoppingItems({ collections }) {
+    console.log(collections);
 
     return (
         <div className="shop-page" >
