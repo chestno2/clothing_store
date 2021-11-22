@@ -24,7 +24,7 @@ function CartDropdown({ cartItems, history, dispatch }) {
                     }}>Go to checkout</CustomButton>
 
             </div>
-        </div >
+        </div>
         //shortt hand to write mapstateto dispatch
     )
 }
@@ -32,6 +32,8 @@ function CartDropdown({ cartItems, history, dispatch }) {
 const mapStateToprops = createStructuredSelector({
     //new way of destructuring we are getting all the cartitems fronm here
     cartItems: selectCartItems,
+    //selector ke same cheezz
+    //cartItems state of redux
 
 
 })
