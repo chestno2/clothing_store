@@ -1,8 +1,10 @@
 import React from 'react'
-import CollectionItem from '../../Components/collectionitem/CollectionItem'
+import { connect } from 'react-redux';
+
+import { selectCategory } from '../../redux/Shop/shopSelector';
 import "./category.scss"
-function CategoryItems({ match }) {
-    console.log(match);
+function CategoryItems({ collection }) {
+    console.log(collection);
     return (
         <div>
             <p>Category Page</p>
@@ -10,5 +12,8 @@ function CategoryItems({ match }) {
         </div>
     )
 }
-
-export default CategoryItems
+const mapStateToProps = (state, ownProps) => ({
+    collection: selectCategory(ownProps.match.params.categoryId)(state)
+})
+//own props are all the props that are at the page of category page
+export default connect(mapStateToProps)(CategoryItems)
