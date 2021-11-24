@@ -6,7 +6,7 @@ import { addItem } from "../../redux/Cart/cartActions"
 
 function CollectionItem({ item, addItem }) {
     console.log(item);
-    console.log(addItem);
+    // console.log(addItem);
     //access items from items
     const { name, imageUrl, price } = item
     return (
