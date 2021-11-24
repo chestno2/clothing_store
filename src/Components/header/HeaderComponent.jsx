@@ -13,7 +13,7 @@ function HeaderComponent({ currentUser, hidden }) {
     return (
         <div className=" header " >
             <Link className="logo-container" to="/" >
-                Logo
+                <img src="https://i.pinimg.com/originals/63/d9/1f/63d91f8fe7dacece85d70d7833dff18e.jpg" alt="" style={{ width: "100px" }} />
             </Link>
             <div className="options">
                 <Link className="option" to="/shop" >
