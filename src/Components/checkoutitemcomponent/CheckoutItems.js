@@ -5,6 +5,7 @@ import "./checkout-item.scss"
 
 function CheckoutItems({ cartItem, clearItem, addItem, removeItem }) {
     const { name, imageUrl, quantity, price } = cartItem
+    console.log(removeItem);
     return (
         <div>
             <div className='checkout-item'>
