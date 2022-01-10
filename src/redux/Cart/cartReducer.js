@@ -18,7 +18,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
 
                 cartItems: addItemToCart(state.cartItems, action.payload)
-                //action payload are new iems
+                //action.payload are new iems
                 //spreading all the arrays value new will appear at the end
 
             }
