@@ -14,16 +14,15 @@ export class SignInComponent extends Component {
     }
     handleSubmit = async e => {
         e.preventDefault();
-        const {email,password} = this.state
+        const { email, password } = this.state
 
-        try{
-            await auth.signInWithEmailAndPassword(email,password )
+        try {
+            await auth.signInWithEmailAndPassword(email, password)
             this.setState({ email: " ", password: "" })
-        } catch(error)
-        {
+        } catch (error) {
             console.log(error);
         }
-       
+
     }
     handleChange = e => {
         const { value, name } = e.target
@@ -41,19 +40,20 @@ export class SignInComponent extends Component {
                         handleChange={this.handleChange}
                         name="email"
                         label="email"
-                        value={this.state.email} required />
+                        value={this.state.email}
+                        required />
 
                     <FormInput
                         type="password"
                         name="password"
                         handleChange={this.handleChange}
-                        value={this.state.password} 
+                        value={this.state.password}
                         required
                         label="password" />
                     <div className="buttons" >
                         <CustomButton onClick={this.handleSubmit} type="submit">Sign In</CustomButton>
                         {" "}
-                        <CustomButton onClick={signInWithGoogle} isGoogleSignin >Sign In With Google</CustomButton>
+                        <CustomButton onClick={signInWithGoogle} isGoogleSignin >Google Sign In</CustomButton>
                         {" "}
                     </div>
                 </form>
