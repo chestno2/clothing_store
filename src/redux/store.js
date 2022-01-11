@@ -4,7 +4,7 @@ import { persistStore } from "redux-persist"
 
 import rootReducer from "./rootReducer"
 
-//add middleware to store whenever action gets fired we ca catch them
+//add middleware to store whenever action gets fired we cacatch them
 const middlewares = [logger];
 //logger will give you insight
 
